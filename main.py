@@ -1,4 +1,5 @@
 tasks = [] # List to store tasks
+done = [] # List to store completed tasks
 
 while True:
     # Print tasks
@@ -7,5 +8,8 @@ while True:
     
     # Input new tasks, if empty, break loop.
     cmd = input('>>> ')
-    if cmd: tasks.append(cmd)
-    else: break
+    if not cmd: break
+    elif cmd[0] == '.':
+        # Pop task from tasks to done list
+        done.append(tasks.pop(int(cmd[1:])-1))
+    else: tasks.append(cmd)
