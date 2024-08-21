@@ -1,21 +1,16 @@
-tasks = [] # List to store tasks
-done = [] # List to store completed tasks
-skipped = [] # List to store skipped tasks
+from interpret import interpret
 
-def act(cmd):
-    if not cmd: exit()
-    elif cmd[0] == '.':
-        # Pop task from tasks to done list
-        done.append(tasks.pop(int(cmd[1:])-1))
-    elif cmd[0] == '#':
-        skipped.append(tasks.pop(int(cmd[1:])-1))
-    else: tasks.append(cmd)
+lists = {
+    'default': [],
+    'done': [],
+    'skipped': []
+}
+
+selected_list = 'default'
 
 while True:
     # Display tasks
-    for i, task in enumerate(tasks):
+    for i, task in enumerate(lists[selected_list]):
         print(f'{i+1:3}. {task}')
 
-    # Take commands and process them
-    command = input('>>> ')
-    act(command)
+    interpret(input('>>> '), selected_list, lists)
