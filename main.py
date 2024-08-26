@@ -6,8 +6,8 @@ lists = {
     'skipped': []
 }
 
-selected_list = ['default']
+selected_lists = ['default', 'done', 'skipped']
 
 while True:
-    display(selected_list, lists)
-    interpret(input('>>> '), selected_list, lists)
+    display(selected_lists, lists)
+    interpret(input('>>> '), selected_lists, lists)
