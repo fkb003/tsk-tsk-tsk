@@ -15,8 +15,11 @@ def add_list(list_name: str, selected_lists: list, lists: dict) -> None:
     selected_lists.insert(-2, list_name)
     change_list(list_name, selected_lists, lists)
 
-def change_list(list_name: str, selected_lists: list, lists: dict) -> None:
-    selected_lists[0] = list_name
+def change_list(l, selected_lists: list, lists: dict) -> None:
+    if type(l) == str:
+        selected_lists[0] = l
+    else:
+        selected_lists[0] = selected_lists[l+1]
     
 def stop(additional: str, selected_lists: list, lists: dict):
     exit()
