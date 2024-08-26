@@ -18,6 +18,8 @@ def display(selected_lists: list, lists: dict) -> None:
     formatted_headers = [f'{header:^{max_width}}' for header in visible_lists]
     print(f"| {' | '.join(formatted_headers)} |")
     print('-' * dash_length)
+    if max_length == 0:
+        print(f"|{'No tasks available. Add some.':^{dash_length-2}}|")
     for i in range(max_length):
         column = []
         for l in visible_lists:
