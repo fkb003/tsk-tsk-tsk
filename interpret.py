@@ -1,6 +1,6 @@
 import action
 
-def interpret(cmd: str, selected_list: str, lists: dict) -> None: 
+def interpret(cmd: str, selected_list: list, lists: dict) -> None: 
     """Call other functions and pass identified arguments"""
     if cmd[0] in action.menu:
         operator = cmd[0]

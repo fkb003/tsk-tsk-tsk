@@ -6,7 +6,7 @@ lists = {
     'skipped': []
 }
 
-selected_list = 'default'
+selected_list = ['default']
 
 while True:
     display(selected_list, lists)
