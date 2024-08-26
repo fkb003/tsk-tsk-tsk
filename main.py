@@ -1,5 +1,5 @@
 from interpret import interpret
-
+from display import display
 lists = {
     'default': [],
     'done': [],
@@ -9,8 +9,5 @@ lists = {
 selected_list = 'default'
 
 while True:
-    # Display tasks
-    for i, task in enumerate(lists[selected_list]):
-        print(f'{i+1:3}. {task}')
-
+    display(selected_list, lists)
     interpret(input('>>> '), selected_list, lists)
