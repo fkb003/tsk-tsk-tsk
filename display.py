@@ -2,9 +2,10 @@ import os
 
 def display(selected_lists: list, lists: dict) -> None:
     os.system('cls' if os.name == 'nt' else 'clear')
+    terminal_size = min(120, os.get_terminal_size().columns)
     visible_lists = selected_lists[1:]
     max_length = 0
-    max_width = 15
+    max_width = (terminal_size//len(visible_lists))-3
     for l in visible_lists:
         length = len(lists[l])
         if length > max_length:
