@@ -12,6 +12,7 @@ def add_task(task: str, selected_lists: list, lists: dict) -> None:
 
 def add_list(list_name: str, selected_lists: list, lists: dict) -> None:
     lists.update({list_name: []})
+    selected_lists.insert(-2, list_name)
     change_list(list_name, selected_lists, lists)
 
 def change_list(list_name: str, selected_lists: list, lists: dict) -> None:

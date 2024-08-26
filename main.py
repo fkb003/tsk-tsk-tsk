@@ -7,7 +7,7 @@ lists = {
     'skipped': []
 }
 
-selected_lists = ['default', 'done', 'skipped']
+selected_lists = ['default', 'default', 'done', 'skipped']
 
 while True:
     display(selected_lists, lists)
