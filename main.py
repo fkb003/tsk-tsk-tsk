@@ -1,5 +1,6 @@
 from interpret import interpret
 from display import display
+import readline
 lists = {
     'default': [],
     'done': [],
