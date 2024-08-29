@@ -1,7 +1,7 @@
 import os
 
 def display(selected_lists: list, lists: dict) -> None:
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     terminal_size = min(120, os.get_terminal_size().columns)
     visible_lists = selected_lists[1:]
     max_length = 0
@@ -10,14 +10,10 @@ def display(selected_lists: list, lists: dict) -> None:
         length = len(lists[l])
         if length > max_length:
             max_length = length
-        width = len(l)
-        if width > max_width:
-            max_width = width
     
     dash_length = (len(visible_lists) * (max_width+3))+1
     print('-' * dash_length)
-    formatted_headers = [f'{header:^{max_width}}' for header in visible_lists]
-    print(f"| {' | '.join(formatted_headers)} |")
+    print_headers(selected_lists, max_width)
     print('-' * dash_length)
     if max_length == 0:
         print(f"|{'No tasks available. Add some.':^{dash_length-2}}|")
@@ -30,3 +26,29 @@ def display(selected_lists: list, lists: dict) -> None:
                 column.append(' ' * max_width)
         print(f"| {' | '.join(column)} |")
     print('-' * dash_length)
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def print_headers(selected_lists: list, header_width: int) -> None:
+
+    visible_lists = selected_lists[1:]
+
+    # Centering individual headers
+    centered_headers = [f'{header:^{header_width}}' for header in visible_lists]
+
+    # ANSI escape codes
+    UNDERLINED = '\033[4m'
+    RESET = '\033[0m'
+
+    # Styling header of selected list
+    original = selected_lists[0]
+    styled = f'{UNDERLINED + original + RESET}'
+    pos = visible_lists.index(original)
+
+    # Injecting the styled header
+    centered_headers[pos] = centered_headers[pos].replace(original, styled)
+
+    # Printing formatted headers
+    formatted_headers = f"| {' | '.join(centered_headers)} |"
+    print(formatted_headers)
