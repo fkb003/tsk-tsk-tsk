@@ -1,6 +1,8 @@
 from interpret import interpret
 from display import display
-import readline
+import os
+if os.name != 'nt': import readline
+
 lists = {
     'default': [],
     'done': [],
