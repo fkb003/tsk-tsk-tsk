@@ -1,3 +1,5 @@
+import display
+
 def move(index: int, origin: list, destination: list) -> None:
     try: destination.append(origin.pop(index))
     except: input('That action is not possible!\n')
@@ -33,6 +35,7 @@ def change_list(l, selected_lists: list, lists: dict) -> None:
 
     
 def stop(additional: str, selected_lists: list, lists: dict):
+    display.clear_screen()
     exit()
 
 menu = {
